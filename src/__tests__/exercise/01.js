@@ -26,11 +26,23 @@ test('counter increments and decrements when the buttons are clicked', () => {
   // 🐨 click the increment button (💰 increment.click())
   const decrement = div.firstChild.querySelectorAll('button').item(0)
   const increment = div.firstChild.querySelectorAll('button').item(1)
-  increment.click()
+  increment.dispatchEvent(
+    new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+      button: 0,
+    }),
+  )
   // 🐨 assert the message.textContent
   expect(message.textContent).toBe('Current count: 1')
   // 🐨 click the decrement button (💰 decrement.click())
-  decrement.click()
+  decrement.dispatchEvent(
+    new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+      button: 0,
+    }),
+  )
   // 🐨 assert the message.textContent
   expect(message.textContent).toBe('Current count: 0')
   //
